@@ -256,8 +256,9 @@ public class SuperPhotoTakePicker {
             return this;
         }
 
-        public void setCropPhoto(boolean cropPhoto) {
+        public Builder setCropPhoto(boolean cropPhoto) {
             isCropPhoto = cropPhoto;
+            return this;
         }
 
         public SuperPhotoTakePicker create() {
