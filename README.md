@@ -1,6 +1,6 @@
 # SuperPhotoTakePicker
 Android 一个简单的头像选择工具 拍照 或者 从相册选择 裁切 最终拿到裁切后的文件，使用者可以调用自己的接口上传到自己的服务器，实现类似于头像上传的功能
-
+[ ![Download](https://api.bintray.com/packages/chinashark/maven/superphototakepicker/images/download.svg) ](https://bintray.com/chinashark/maven/superphototakepicker/_latestVersion)
 ## 特点
 1.基于Android原生提供的接口，没有自建图片选择器，图片裁剪器及相机，大幅度降低适配难度  
 2.适配Android7.0及以上  
@@ -41,7 +41,7 @@ SuperPhotoTakePicker picker = new SuperPhotoTakePicker.Builder(this)
                 .setCropPhoto(true)//if false callback onRawPhotoReceived,if true callback onCropPhotoReceived
                 .setCompressFormat(Bitmap.CompressFormat.JPEG)//裁剪后图片的存储格式，,crop photo format
                 .setCropWidth(200)//裁剪后图片的大小,crop photo width
-                .setCropHeight(200)//裁剪后图片的大小,,crop photo width
+                .setCropHeight(200)//裁剪后图片的大小,,crop photo height
                 .setAuthority(getPackageName())//本APP的FileProvider的Authority,use step 2 authorities value
                 .setOnPhotoChangedListener(this)//callback
                 .create();
