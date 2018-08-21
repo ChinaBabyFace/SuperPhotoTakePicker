@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements OnPhotoChangedLis
         picker = new SuperPhotoTakePicker.Builder(this)
                 .setAspectX(1)//设置裁剪后图片的横纵比例
                 .setAspectY(1)//设置裁剪后图片的横纵比例
-                .setCropPhoto(false)
+//                .setCropPhoto(false)
                 .setCompressFormat(Bitmap.CompressFormat.JPEG)//裁剪后图片的存储格式
                 .setCropWidth(200)//裁剪后图片的大小
                 .setCropHeight(200)//裁剪后图片的大小
