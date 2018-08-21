@@ -78,5 +78,18 @@ picker.startAlbum();
 ```java
 picker.startCamera();
 ```
+7.回调callback
+```java
+public interface OnPhotoChangedListener {
+    //收到用来裁切的图
+    //Receive raw photo before crop
+    void onRawPhotoReceived(File file);
+    //收到裁切好的图，setCropPhoto如果为false，这个方法不会收到回调
+    //Receive crop photo
+    void onCropPhotoReceived(File file);
 
+    void onError(Exception e);
+}
+```java
 
+8.其他问题看项目里的demo吧，Just look demo in project
