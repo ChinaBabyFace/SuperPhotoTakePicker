@@ -18,3 +18,28 @@ Android 一个简单的头像选择工具 拍照 或者 从相册选择 裁切 �
 ```gradle
 implementation 'com.shark:superphototakepicker:1.0.2'
 ```
+2.由于Android7.0的原因在Manifest中创建自己的FileProvider.Create FileProvider in Mainfest
+```xml
+ <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+  </provider>
+```
+3.设置Picker  Setting picker
+```java
+SuperPhotoTakePicker picker = new SuperPhotoTakePicker.Builder(this)
+                .setAspectX(1)//设置裁剪后图片的横纵比例
+                .setAspectY(1)//设置裁剪后图片的横纵比例
+                .setCropPhoto(false//
+                .setCompressFormat(Bitmap.CompressFormat.JPEG)//裁剪后图片的存储格式
+                .setCropWidth(200)//裁剪后图片的大小
+                .setCropHeight(200)//裁剪后图片的大小
+                .setAuthority(getPackageName())//本APP的FileProvider的Authority
+                .setOnPhotoChangedListener(this)//callback
+                .create();
+```
