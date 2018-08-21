@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements OnPhotoChangedLis
         picker = new SuperPhotoTakePicker.Builder(this)
                 .setAspectX(1)//设置裁剪后图片的横纵比例
                 .setAspectY(1)//设置裁剪后图片的横纵比例
-//                .setCropPhoto(false)
+                .setCropPhoto(true)
                 .setCompressFormat(Bitmap.CompressFormat.JPEG)//裁剪后图片的存储格式
                 .setCropWidth(200)//裁剪后图片的大小
                 .setCropHeight(200)//裁剪后图片的大小
@@ -92,6 +92,7 @@ public class MainActivity extends AppCompatActivity implements OnPhotoChangedLis
         //裁剪前的原始图片文件
         SLog.e(this, "onRawPhotoReceived:" + file.getAbsolutePath());
         binding.rawPathTextView.setText(file.getAbsolutePath());
+        Glide.with(this).load(file).into(binding.imageView);
     }
 
     @Override
