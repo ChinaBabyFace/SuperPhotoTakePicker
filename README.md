@@ -90,6 +90,6 @@ public interface OnPhotoChangedListener {
 
     void onError(Exception e);
 }
-```java
+```
 
 8.其他问题看项目里的demo吧，Just look demo in project
