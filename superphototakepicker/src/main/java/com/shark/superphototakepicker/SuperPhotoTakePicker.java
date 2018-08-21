@@ -71,7 +71,7 @@ public class SuperPhotoTakePicker {
     }
 
     public File getCropFile(String timestamp) {
-        File cropFile = new File(Environment.getExternalStorageDirectory().getPath(), timestamp + CROP_PHOTO_FILE_NAME); //随便命名一个
+        File cropFile = new File(Environment.getExternalStorageDirectory().getPath(), timestamp + CROP_PHOTO_FILE_NAME);
         return cropFile;
     }
 
@@ -139,14 +139,6 @@ public class SuperPhotoTakePicker {
         }
     }
 
-    /**
-     * 1.这个方法不是必须调用的，根据个人实际情况
-     * 2.如果要使用该方法需在onCropPhotoReceived时，完成业务操作后，删除图片文件
-     * 3.这个方法的出发点：在有些手机当裁剪回调发生后onActivityResult已经收到回调，
-     * 但是裁剪生成的文件还没有生成或者是正在生成，那么就无法立即回调onCropPhotoReceived，
-     * 只能后期主动调用checkCropPhotoState 去发起检查
-     * 4：可以放在Activity onResume中检查
-     */
     public void checkCropPhotoState() {
         File cropFile = getCropFile(cropTimestamp);
         if (!cropFile.exists() || cropFile.length() <= 0) return;
