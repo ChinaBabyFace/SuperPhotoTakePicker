@@ -31,6 +31,7 @@ public class SuperPhotoTakePicker {
     private int cropHeight;
     private int aspectX;
     private int aspectY;
+    private boolean isCropPhoto;
     private String authority;
     private String cropTimestamp;
     private Activity activity;
@@ -135,7 +136,7 @@ public class SuperPhotoTakePicker {
         } else {
             if (onPhotoChangedListener != null)
                 onPhotoChangedListener.onRawPhotoReceived(rawPhoto);
-            cropPhoto(rawPhoto, cropTimestamp);
+            if (isCropPhoto)cropPhoto(rawPhoto, cropTimestamp);
         }
     }
 
@@ -201,6 +202,10 @@ public class SuperPhotoTakePicker {
         this.compressFormat = compressFormat;
     }
 
+    public void setCropPhoto(boolean cropPhoto) {
+        isCropPhoto = cropPhoto;
+    }
+
     public static class Builder {
         private int cropWidth = 100;
         private int cropHeight = 100;
@@ -208,6 +213,7 @@ public class SuperPhotoTakePicker {
         private int aspectY = 1;
         private String authority = "";
         private Activity activity;
+        private boolean isCropPhoto=true;
         private Bitmap.CompressFormat compressFormat = Bitmap.CompressFormat.JPEG;
         private OnPhotoChangedListener onPhotoChangedListener;
 
@@ -250,12 +256,17 @@ public class SuperPhotoTakePicker {
             return this;
         }
 
+        public void setCropPhoto(boolean cropPhoto) {
+            isCropPhoto = cropPhoto;
+        }
+
         public SuperPhotoTakePicker create() {
             if (!(activity instanceof Activity))
                 throw new IllegalArgumentException("SuperPhotoTakePicker need Activity!");
             if (Build.VERSION.SDK_INT >= 24 && TextUtils.isEmpty(authority))
                 throw new IllegalArgumentException("When android sdk>=24,need file provider and authority!");
             SuperPhotoTakePicker picker = new SuperPhotoTakePicker(activity);
+            picker.setCropPhoto(isCropPhoto);
             picker.setAspectX(aspectX);
             picker.setAspectY(aspectY);
             picker.setCropWidth(cropWidth);
