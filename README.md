@@ -20,10 +20,10 @@ Android 一个简单的头像选择工具 拍照 或者 从相册选择 裁切 �
 ```gradle
 implementation 'com.shark:superphototakepicker:1.0.2'
 ```
-2.由于Android7.0的原因在Manifest中创建自己的FileProvider.Create FileProvider in Mainfest
+2.由于Android7.0的原因在Manifest中创建自己的FileProvider.Create FileProvider in Manifest
 
 如果有的话就不需要创建了，注意authorities的值，这里是本APP的包名，可以用其他名.
-Need not create，if you have file provideer.Notice authorities value.You can use packageName or other string
+Need not create，if you have file provider.Notice authorities value.You can use packageName or other string
 ```xml
  <provider
             android:name="android.support.v4.content.FileProvider"
@@ -48,7 +48,7 @@ SuperPhotoTakePicker picker = new SuperPhotoTakePicker.Builder(this)
                 .setOnPhotoChangedListener(this)//callback
                 .create();
 ```
-4.onActivityResult in Actvity or Fragment
+4.onActivityResult in Activity or Fragment
 ```java
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
