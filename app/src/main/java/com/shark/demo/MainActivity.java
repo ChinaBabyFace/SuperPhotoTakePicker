@@ -46,12 +46,18 @@ public class MainActivity extends AppCompatActivity implements OnPhotoChangedLis
         binding.cmeraButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                binding.rawPathTextView.setText("");
+                binding.cropPathTextView.setText("");
+                binding.error.setText("");
                 MainActivityPermissionsDispatcher.startCameraWithPermissionCheck(MainActivity.this);
             }
         });
         binding.albumButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                binding.rawPathTextView.setText("");
+                binding.cropPathTextView.setText("");
+                binding.error.setText("");
                 MainActivityPermissionsDispatcher.startAlbumWithPermissionCheck(MainActivity.this);
             }
         });
@@ -100,6 +106,9 @@ public class MainActivity extends AppCompatActivity implements OnPhotoChangedLis
     public void onError(Exception e) {
         //错误e.getMessage()
         SLog.e(this, "onError:" + e.getMessage());
+        binding.rawPathTextView.setText("");
+        binding.cropPathTextView.setText("");
+        binding.error.setText("Error:"+e.getMessage());
 
     }
 
