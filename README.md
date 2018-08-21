@@ -1,6 +1,8 @@
 # SuperPhotoTakePicker
-Android 一个简单的头像选择工具 拍照 或者 从相册选择 裁切 最终拿到裁切后的文件，使用者可以调用自己的接口上传到自己的服务器，实现类似于头像上传的功能
-[ ![Download](https://api.bintray.com/packages/chinashark/maven/superphototakepicker/images/download.svg) ](https://bintray.com/chinashark/maven/superphototakepicker/_latestVersion)
+Android 一个简单的头像选择工具 拍照 或者 从相册选择 裁切 最终拿到裁切后的文件，使用者可以调用自己的接口上传到自己的服务器，实现类似于头像上传的功能  
+
+[ ![Download](https://api.bintray.com/packages/chinashark/maven/superphototakepicker/images/download.svg) ](https://bintray.com/chinashark/maven/superphototakepicker/_latestVersion)  
+
 ## 特点
 1.基于Android原生提供的接口，没有自建图片选择器，图片裁剪器及相机，大幅度降低适配难度  
 2.适配Android7.0及以上  
@@ -46,3 +48,35 @@ SuperPhotoTakePicker picker = new SuperPhotoTakePicker.Builder(this)
                 .setOnPhotoChangedListener(this)//callback
                 .create();
 ```
+4.onActivityResult in Actvity or Fragment
+```java
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        picker.onActivityResult(requestCode,resultCode,data);
+    }
+```
+
+5.权限Permission
+```xml
+ <uses-permission android:name="android.permission.CAMERA" />
+ <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+```
+6.权限主动请求 Permission Request
+
+如果运行到Android 6.0及以上手机时，需要在调用这两个方法之前要主动向用户请求权限才行
+If run on android 6.0+,You need request Permission before call these function
+
+可以参考这个开源的权限请求库，you can reference PermissionsDispatcher library
+- [PermissionsDispatcher](https://github.com/permissions-dispatcher/PermissionsDispatcher)
+
+需要Manifest.permission.WRITE_EXTERNAL_STORAGE权限
+```java
+picker.startAlbum();
+```
+需要Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA
+```java
+picker.startCamera();
+```
+
+
