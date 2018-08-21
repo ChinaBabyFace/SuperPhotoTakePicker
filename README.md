@@ -12,7 +12,7 @@ Android 一个简单的头像选择工具 拍照 或者 从相册选择 裁切 �
 ## Feature
 1.Base on android api to camera take photo,album pick photo,crop photo.No third part jar.  
 2.Adapt Android 7.0+.  
-3.SuperPhotoTakePicker Jar is very small,very simple,custom easy.
+3.SuperPhotoTakePicker Jar is very small,very simple,custom easy.  
 4.Set param，you can get raw photo from camera or album,no crop.
 
 ## 使用方法 USE
