@@ -19,6 +19,9 @@ Android 一个简单的头像选择工具 拍照 或者 从相册选择 裁切 �
 implementation 'com.shark:superphototakepicker:1.0.2'
 ```
 2.由于Android7.0的原因在Manifest中创建自己的FileProvider.Create FileProvider in Mainfest
+
+如果有的话就不需要创建了，注意authorities的值，这里是本APP的包名，可以用其他名.
+Need not create，if you have file provideer.Notice authorities value.You can use packageName or other string
 ```xml
  <provider
             android:name="android.support.v4.content.FileProvider"
@@ -33,13 +36,13 @@ implementation 'com.shark:superphototakepicker:1.0.2'
 3.设置Picker  Setting picker
 ```java
 SuperPhotoTakePicker picker = new SuperPhotoTakePicker.Builder(this)
-                .setAspectX(1)//设置裁剪后图片的横纵比例
+                .setAspectX(1)//设置裁剪后图片的横纵比例,x/y,square or rectangle
                 .setAspectY(1)//设置裁剪后图片的横纵比例
-                .setCropPhoto(false//
-                .setCompressFormat(Bitmap.CompressFormat.JPEG)//裁剪后图片的存储格式
-                .setCropWidth(200)//裁剪后图片的大小
-                .setCropHeight(200)//裁剪后图片的大小
-                .setAuthority(getPackageName())//本APP的FileProvider的Authority
+                .setCropPhoto(true)//if false callback onRawPhotoReceived,if true callback onCropPhotoReceived
+                .setCompressFormat(Bitmap.CompressFormat.JPEG)//裁剪后图片的存储格式，,crop photo format
+                .setCropWidth(200)//裁剪后图片的大小,crop photo width
+                .setCropHeight(200)//裁剪后图片的大小,,crop photo width
+                .setAuthority(getPackageName())//本APP的FileProvider的Authority,use step 2 authorities value
                 .setOnPhotoChangedListener(this)//callback
                 .create();
 ```
