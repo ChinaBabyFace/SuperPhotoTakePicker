@@ -33,7 +33,7 @@ public class SuperPhotoTakePicker {
     private int aspectY;
     private boolean isCropPhoto;
     private String authority;
-    private String cropTimestamp;
+    private String cropTimestamp="";
     private Activity activity;
     private Bitmap.CompressFormat compressFormat;
     private OnPhotoChangedListener onPhotoChangedListener;
@@ -136,7 +136,7 @@ public class SuperPhotoTakePicker {
         } else {
             if (onPhotoChangedListener != null)
                 onPhotoChangedListener.onRawPhotoReceived(rawPhoto);
-            if (isCropPhoto)cropPhoto(rawPhoto, cropTimestamp);
+            if (isCropPhoto) cropPhoto(rawPhoto, cropTimestamp);
         }
     }
 
@@ -144,6 +144,12 @@ public class SuperPhotoTakePicker {
         File cropFile = getCropFile(cropTimestamp);
         if (!cropFile.exists() || cropFile.length() <= 0) return;
         onPhotoChangedListener.onCropPhotoReceived(cropFile);
+    }
+
+    public void clearCropPhoto() {
+        File cropFile = getCropFile(cropTimestamp);
+        if (!cropFile.exists() || cropFile.length() <= 0) return;
+        cropFile.delete();
     }
 
     public OnPhotoChangedListener getOnPhotoChangedListener() {
@@ -213,7 +219,7 @@ public class SuperPhotoTakePicker {
         private int aspectY = 1;
         private String authority = "";
         private Activity activity;
-        private boolean isCropPhoto=true;
+        private boolean isCropPhoto = true;
         private Bitmap.CompressFormat compressFormat = Bitmap.CompressFormat.JPEG;
         private OnPhotoChangedListener onPhotoChangedListener;
 
