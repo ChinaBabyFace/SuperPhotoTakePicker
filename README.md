@@ -18,7 +18,7 @@ Android 一个简单的头像选择工具 拍照 或者 从相册选择 裁切 �
 ## 使用方法 USE
 1.添加gradle依赖 Add gradle dependencies
 ```gradle
-implementation 'com.shark:superphototakepicker:1.0.2'
+implementation 'com.shark:superphototakepicker:1.0.3'
 ```
 2.由于Android7.0的原因在Manifest中创建自己的FileProvider.Create FileProvider in Manifest
 
