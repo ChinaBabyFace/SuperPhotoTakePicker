@@ -93,3 +93,23 @@ public interface OnPhotoChangedListener {
 ```
 
 8.其他问题看项目里的demo吧，Just look demo in project
+
+9.适配清单 Adapt List
+
+| Brand | Model |
+| - | - | 
+| 小米| mix2|  
+| 小米| note pro|
+| 小米| note|
+| 小米| 4|
+| 小米| 2s|
+| 红米| 1s|
+| 红米| 6|
+| Vivo| Z1|
+| 华为| Mate10|
+| 华为| P20|
+| 华为| 6x|
+| 荣耀| 畅玩4C|
+| 荣耀| V9|
+| 三星| S7 edge|
+| 魅族| Note 6|
